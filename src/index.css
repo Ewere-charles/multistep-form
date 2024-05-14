@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer{
+  html{
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+  }
+
+  *{
+    font-family: 'Ubuntu', sans-serif;
+    user-select: none;
+  }
+
+  .marine-purple{
+    background-color: hsl(213, 96%, 18%) !important;
+  }
+
+  .mpb{
+    border-color: hsl(213, 96%, 18%) !important;
+  }
+  .apb{
+    accent-color: hsl(243, 100%, 62%) !important;
+  }
+  .marine-purple-text{
+    color: hsl(213, 96%, 18%) !important;
+  }
+
+  .purplish-blue-bg{
+    background-color: hsl(243, 100%, 62%) !important;
+  }
+
+  .purplish-blue{
+    color: hsl(243, 100%, 62%) !important;
+  }
+
+
+
+  .pastel-blue{
+    background-color: hsl(228, 100%, 84%) !important;
+  }
+
+  .light-blue{
+    background-color: hsl(206, 94%, 87%) !important;
+  }
+
+  .strawberry{
+    color: hsl(354, 84%, 57%) !important;
+  }
+
+  .sbo{
+    border-color: hsl(354, 84%, 57%) !important;
+  }
+  .sbout{
+    outline-color: hsl(354, 84%, 57%) !important;
+  }
+
+  .text-cool-grey{
+    color: hsl(231, 11%, 63%) !important;
+  }
+
+  .light-grey{
+    background-color: hsl(229, 24%, 87%) !important;
+  }
+
+  .light-grey-text{
+    color: hsl(229, 24%, 87%) !important;
+  }
+
+  .magnolia{
+    color: hsl(217, 100%, 97%) !important;
+  }
+
+  .alabaster{
+    color: hsl(231, 100%, 99%) !important;
+  }
+}
