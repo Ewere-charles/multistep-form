@@ -50,7 +50,7 @@ function PlanPage({ toggle, setToggle, setAddOnsPrice, setPlanName, planName}) {
     return(
         <div className="w-full lg:max-w-[900px] h-auto min-h-screen lg:h-[560px] lg:min-h-0 lg:rounded-xl flex flex-col lg:flex-row justify-start items-center lg:p-4 lg:gap-[40px] bg-white">
             <Navigate number={2}/>
-            <div className=" lg:w-[550px] w-full flex flex-col gap-5 lg:gap-10  items-center justify-start pb-5 lg:h-full relative z-20" >
+            <div className=" lg:w-[550px] w-full flex flex-col gap-5  items-center justify-start pb-5 lg:h-full relative z-20" >
             <div className="bg-slate-200 lg:bg-inherit h-auto w-full flex items-start justify-center"> 
             <form className="w-[90%] max-w-[550px] flex flex-col justify-start items-start gap-5 lg:gap-10  bg-white h-auto px-5 py-[35px] rounded-lg lg:transform-none transform -translate-y-[80px]">
                 <div>
