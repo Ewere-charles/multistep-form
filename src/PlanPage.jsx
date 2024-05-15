@@ -4,6 +4,7 @@ import arcade from "./images/icon-arcade.svg";
 import advance from "./images/icon-advanced.svg";
 import pro from "./images/icon-pro.svg";
 import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
 
 function PlanPage({ toggle, setToggle, setAddOnsPrice, setPlanName, planName}) {
     const [plan, setPlan] = useState(1);
@@ -48,7 +49,11 @@ function PlanPage({ toggle, setToggle, setAddOnsPrice, setPlanName, planName}) {
     }
 
     return(
-        <div className="w-full lg:max-w-[900px] h-auto min-h-screen lg:h-[560px] lg:min-h-0 lg:rounded-xl flex flex-col lg:flex-row justify-start items-center lg:p-4 lg:gap-[40px] bg-white">
+        <motion.div 
+        initial={{x:200}}
+        whileInView={{x:0}}
+        transition={{ type: "spring", stiffness: 200, damping: 10 }}
+        className="w-full lg:max-w-[900px] h-auto min-h-screen lg:h-[560px] lg:min-h-0 lg:rounded-xl flex flex-col lg:flex-row justify-start items-center lg:p-4 lg:gap-[40px] bg-white">
             <Navigate number={2}/>
             <div className=" lg:w-[550px] w-full flex flex-col gap-5  items-center justify-start pb-5 lg:h-full relative z-20" >
             <div className="bg-slate-200 lg:bg-inherit h-auto w-full flex items-start justify-center"> 
@@ -101,14 +106,16 @@ function PlanPage({ toggle, setToggle, setAddOnsPrice, setPlanName, planName}) {
                 </Link>
                 
                 <Link to={'/Addons'}>
-                    <button
+                    <motion.button
                         className="marine-purple light-grey-text font-bold px-4 h-10 rounded-[5px]"
-                    >Next Step</button>
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >Next Step</motion.button>
                 </Link>
              </div>
             </div>
 
-        </div>
+        </motion.div>
     )
 }
 

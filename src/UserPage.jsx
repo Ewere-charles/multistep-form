@@ -1,6 +1,7 @@
 import Navigate from "./Navigate.jsx";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function UserPage() {
     const [name, setName] = useState('');
@@ -53,7 +54,11 @@ function UserPage() {
 
 
     return(
-        <div className="w-full lg:max-w-[900px] h-auto min-h-screen lg:h-[560px] lg:min-h-0 lg:rounded-xl flex flex-col lg:flex-row justify-start items-center lg:p-4 lg:gap-[40px] bg-white">
+        <motion.div 
+        initial={{x:200}}
+        whileInView={{x:0}}
+        transition={{ type: "spring", stiffness: 200, damping: 10 }}
+        className="w-full lg:max-w-[900px] h-auto min-h-screen lg:h-[560px] lg:min-h-0 lg:rounded-xl flex flex-col lg:flex-row justify-start items-center lg:p-4 lg:gap-[40px] bg-white">
             <Navigate number={1}/>
             <div className=" lg:w-[550px] w-full flex flex-col gap-5 items-center justify-start pb-5 lg:h-full relative z-20" >
             <div className="bg-slate-200 lg:bg-inherit h-auto w-full flex items-start justify-center"> 
@@ -104,14 +109,19 @@ function UserPage() {
             </form>
             </div>
             <div className="w-[90%] md:max-w-[550px] flex items-center justify-end px-5">
-        <button
-            className="marine-purple magnolia font-[550] px-4 h-10 rounded"
-            onClick={(e)=>  handleSubmit(e)}
-            >Next Step</button>
+            <motion.button
+                    className="marine-purple magnolia font-[550] px-4 h-10 rounded"
+                    onClick={(e) => handleSubmit(e)}
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                    Next Step
+                </motion.button>
+
         </div>
             </div>
 
-        </div>
+        </motion.div>
     )
 }
 

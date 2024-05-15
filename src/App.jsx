@@ -12,12 +12,17 @@ function App() {
   const [planName, setPlanName] = useState({ name: '', amount: 0 });
   const [addItems, setAddItems] = useState([]);
 
+  const slideVariants = { 
+    slideOut : { x : -200},
+    slideIn : {x : 200}
+}
+
   return (
     <div className="w-full light-blue min-h-screen h-auto flex items-center justify-center lg:shadow-2xl lg:shadow-slate-700">
 
       <Router>
         <Routes>
-          <Route path="/" element={<UserPage />} />
+          <Route path="/" element={<UserPage slideVariants={slideVariants}/>} />
           <Route
             path="/plan"
             element={

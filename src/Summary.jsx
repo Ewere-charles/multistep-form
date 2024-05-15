@@ -1,10 +1,15 @@
 import Navigate from "./Navigate";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
 
 function Summary({planName, addOnsPrice, toggle, addItems}){
 
     return(
-        <div className="w-full lg:max-w-[900px] h-auto min-h-screen lg:h-[560px] lg:min-h-0 lg:rounded-xl flex flex-col lg:flex-row justify-start items-center lg:p-4 lg:gap-[40px] bg-white">
+        <motion.div 
+        initial={{x:200}}
+        whileInView={{x:0}}
+        transition={{ type: "spring", stiffness: 200, damping: 10 }}
+        className="w-full lg:max-w-[900px] h-auto min-h-screen lg:h-[560px] lg:min-h-0 lg:rounded-xl flex flex-col lg:flex-row justify-start items-center lg:p-4 lg:gap-[40px] bg-white">
         <Navigate number={4}/>
         <div className=" lg:w-[550px] w-full flex flex-col gap-5 items-center justify-start pb-5 lg:h-full relative z-20" >
         <div className="bg-slate-200 lg:bg-inherit h-auto w-full flex items-start justify-center"> 
@@ -51,14 +56,16 @@ function Summary({planName, addOnsPrice, toggle, addItems}){
         <div className="w-[90%] md:max-w-[550px] lg:px-5  flex items-center justify-end lg:mt-10">
                 
                 <Link to={'/confirm'}>
-                    <button
+                    <motion.button
                         className="purplish-blue-bg light-grey-text font-bold px-4 h-10 rounded-[5px]"
-                    >Confirm</button>
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >Confirm</motion.button>
                 </Link>
              </div>
         </div>
 
-    </div>
+    </motion.div>
     );
 }
 

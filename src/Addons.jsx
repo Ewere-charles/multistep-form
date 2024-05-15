@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navigate from "./Navigate.jsx";
 import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
 
 function AddOns({ toggle, setAddOnsPrice, setAddItems, addItems }) {
     const [add, setAdd] = useState(false);
@@ -70,7 +71,11 @@ function AddOns({ toggle, setAddOnsPrice, setAddItems, addItems }) {
 
 
     return(
-        <div className="w-full lg:max-w-[900px] h-auto min-h-screen lg:h-[560px] lg:min-h-0 lg:rounded-xl flex flex-col lg:flex-row justify-start items-center lg:p-4 lg:gap-[40px] bg-white">
+        <motion.div 
+        initial={{x:200}}
+        whileInView={{x:0}}
+        transition={{ type: "spring", stiffness: 200, damping: 10 }}
+        className="w-full lg:max-w-[900px] h-auto min-h-screen lg:h-[560px] lg:min-h-0 lg:rounded-xl flex flex-col lg:flex-row justify-start items-center lg:p-4 lg:gap-[40px] bg-white">
             <Navigate number={3}/>
             <div className=" lg:w-[550px] w-full flex flex-col gap-5 lg:gap-0 items-center justify-start lg:justify-between pb-5 lg:h-full relative z-20" >
             <div className="bg-slate-200 lg:bg-inherit h-auto w-full flex items-start justify-center"> 
@@ -136,14 +141,16 @@ function AddOns({ toggle, setAddOnsPrice, setAddItems, addItems }) {
                 </Link>
                 
                 <Link to={'/summary'}>
-                    <button
+                    <motion.button
                         className="marine-purple light-grey-text font-bold px-4 h-10 rounded-[5px]"
-                    >Next Step</button>
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >Next Step</motion.button>
                 </Link>
              </div>
             </div>
 
-        </div>
+        </motion.div>
     )
 }
 
