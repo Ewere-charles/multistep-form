@@ -1,14 +1,22 @@
 import Navigate from "./Navigate";
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 
-function Summary({planName, addOnsPrice, toggle, addItems}){
+function Summary({planName, addOnsPrice, toggle, addItems, setAddItems, isDesktopOrLaptop}){
+    const navigate = useNavigate();
+
+    function emptyAddItems(e){
+        e.preventDefault();
+
+        setAddItems([]);
+        navigate('/plan');
+    }
 
     return(
         <motion.div 
-        initial={{x:200}}
-        whileInView={{x:0}}
-        transition={{ type: "spring", stiffness: 200, damping: 10 }}
+        initial={isDesktopOrLaptop ? {x:200} : {}}
+            whileInView={isDesktopOrLaptop ? {x:0} : {}}
+            transition={{ type: "spring", stiffness: 200, damping: 10 }}
         className="w-full lg:max-w-[900px] h-auto min-h-screen lg:h-[560px] lg:min-h-0 lg:rounded-xl flex flex-col lg:flex-row justify-start items-center lg:p-4 lg:gap-[40px] bg-white">
         <Navigate number={4}/>
         <div className=" lg:w-[550px] w-full flex flex-col gap-5 items-center justify-start pb-5 lg:h-full relative z-20" >
@@ -27,9 +35,10 @@ function Summary({planName, addOnsPrice, toggle, addItems}){
                 <div className="p-4 border-b-2 w-full flex items-center justify-between">
                     <div>
                         <h2 className="font-semibold text-[18px] marine-purple-text">{planName.name} {`(${toggle ? 'Yearly' : 'Monthly'})`}</h2>
-                        <Link to={'/plan'}>
-                        <p className="text-neutral-400 underline cursor-pointer hover:text-blue-900">Change</p>
-                        </Link>
+                        
+                        <p className="text-neutral-400 underline cursor-pointer hover:text-blue-900"
+                        onClick={(e) => emptyAddItems(e)}
+                        >Change</p>
                     </div>
                     <span className="font-semibold text-[18px] marine-purple-text">{`$${planName.amount}/${toggle? 'yr' : 'mo'}`}</span>
                 </div>

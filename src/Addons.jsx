@@ -3,7 +3,7 @@ import Navigate from "./Navigate.jsx";
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 
-function AddOns({ toggle, setAddOnsPrice, setAddItems, addItems }) {
+function AddOns({ toggle, setAddOnsPrice, setAddItems, addItems, isDesktopOrLaptop }) {
     const [add, setAdd] = useState(false);
     const [large, setLarge] = useState(false);
     const [custom, setCustom] = useState(false);
@@ -72,9 +72,9 @@ function AddOns({ toggle, setAddOnsPrice, setAddItems, addItems }) {
 
     return(
         <motion.div 
-        initial={{x:200}}
-        whileInView={{x:0}}
-        transition={{ type: "spring", stiffness: 200, damping: 10 }}
+        initial={isDesktopOrLaptop ? {x:200} : {}}
+            whileInView={isDesktopOrLaptop ? {x:0} : {}}
+            transition={{ type: "spring", stiffness: 200, damping: 10 }}
         className="w-full lg:max-w-[900px] h-auto min-h-screen lg:h-[560px] lg:min-h-0 lg:rounded-xl flex flex-col lg:flex-row justify-start items-center lg:p-4 lg:gap-[40px] bg-white">
             <Navigate number={3}/>
             <div className=" lg:w-[550px] w-full flex flex-col gap-5 lg:gap-0 items-center justify-start lg:justify-between pb-5 lg:h-full relative z-20" >
@@ -90,7 +90,7 @@ function AddOns({ toggle, setAddOnsPrice, setAddItems, addItems }) {
                         {/* First label */}
                         <label className={`p-3 w-full flex items-center justify-between rounded-lg border-[1px]  ${add? 'mpb' : 'border-slate-200'}`} htmlFor="service" onClick={(e) => handleAdd(e, 1)}>
                         <div className="flex items-center justify-start gap-4">
-                            <input type="checkbox" name="service" id="service" checked={add} className={`h-5 w-5 apb pointer-events-none ${add? 'opacity-100' : 'opacity-30'}`}/>
+                            <input type="checkbox" name="service" id="service" checked={add} onChange={(e) => handleCheckboxChange(e, setAdd)} className={`h-5 w-5 apb pointer-events-none ${add? 'opacity-100' : 'opacity-30'}`}/>
                             <div>
                                 <h2 className="marine-purple-text text-[17px] font-semibold">Online service</h2>
                                 <p className="text-cool-grey text-[13px]">Access to multiplayer games</p>
@@ -103,9 +103,9 @@ function AddOns({ toggle, setAddOnsPrice, setAddItems, addItems }) {
 
 
                         {/* Second label */}
-                        <label className={`p-3 w-full flex items-center justify-between rounded-lg border-[1px]  ${large? 'mpb' : ' border-slate-200'}`} htmlFor="service" onClick={(e) => handleAdd(e, 2)}>
+                        <label className={`p-3 w-full flex items-center justify-between rounded-lg border-[1px]  ${large? 'mpb' : ' border-slate-200'}`} htmlFor="large" onClick={(e) => handleAdd(e, 2)}>
                         <div className="flex items-center justify-start gap-4">
-                            <input type="checkbox" name="service" id="service" checked={large} className={`h-5 w-5 apb pointer-events-none ${large? 'opacity-100' : 'opacity-30'}`}/>
+                            <input type="checkbox" name="large" id="service" checked={large} onChange={(e) => handleCheckboxChange(e, setLarge)} className={`h-5 w-5 apb pointer-events-none ${large? 'opacity-100' : 'opacity-30'}`}/>
                             <div>
                                 <h2 className="marine-purple-text text-[17px] font-semibold">Larger storage</h2>
                                 <p className="text-cool-grey text-[13px]">Extra 1TB of cloude save</p>
@@ -118,9 +118,9 @@ function AddOns({ toggle, setAddOnsPrice, setAddItems, addItems }) {
 
 
                         {/* Third label */}
-                        <label className={`p-3 w-full flex items-center justify-between rounded-lg border-[1px] ${custom? 'mpb' : 'border-slate-200'}`} htmlFor="service" onClick={(e) => handleAdd(e, 3)}>
+                        <label className={`p-3 w-full flex items-center justify-between rounded-lg border-[1px] ${custom? 'mpb' : 'border-slate-200'}`} htmlFor="custom" onClick={(e) => handleAdd(e, 3)}>
                         <div className="flex items-center justify-start gap-4">
-                            <input type="checkbox" name="service" id="service" checked={custom} className={`h-5 w-5 apb pointer-events-none ${custom? 'opacity-100' : 'opacity-30'}`}/>
+                            <input type="checkbox" name="custom" id="service" checked={custom} onChange={(e) => handleCheckboxChange(e, setCustom)} className={`h-5 w-5 apb pointer-events-none ${custom? 'opacity-100' : 'opacity-30'}`}/>
                             <div>
                                 <h2 className="marine-purple-text text-[17px] font-semibold">Customizable profile</h2>
                                 <p className="text-cool-grey text-[13px]">Customize theme on your profile</p>

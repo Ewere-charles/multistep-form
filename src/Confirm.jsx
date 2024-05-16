@@ -2,13 +2,13 @@ import Navigate from "./Navigate";
 import success from "./images/icon-thank-you.svg";
 import { motion } from "framer-motion";
 
-function Confirm(){
+function Confirm({isDesktopOrLaptop}){
 
     return(
         <motion.div 
-            initial={{ x: 200 }}
-            whileInView={{ x: 0 }}
-            transition={{ type: "spring", stiffness: 200, damping: 10 }}
+        initial={isDesktopOrLaptop ? {x:200} : {}}
+        whileInView={isDesktopOrLaptop ? {x:0} : {}}
+        transition={{ type: "spring", stiffness: 200, damping: 10 }}
             className="w-full lg:max-w-[900px] h-auto min-h-screen lg:h-[560px] lg:min-h-0 lg:rounded-xl flex flex-col lg:flex-row justify-start items-center lg:p-4 lg:gap-[40px] bg-white"
         >
             <Navigate number={4}/>

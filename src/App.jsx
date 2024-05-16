@@ -5,6 +5,7 @@ import AddOns from "./Addons";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Summary from './Summary';
 import Confirm from './Confirm';
+import { useMediaQuery } from 'react-responsive';
 
 function App() {
   const [toggle, setToggle] = useState(false);
@@ -17,12 +18,17 @@ function App() {
     slideIn : {x : 200}
 }
 
+const isDesktopOrLaptop = useMediaQuery({ minDeviceWidth: 1024 });
+
   return (
     <div className="w-full light-blue min-h-screen h-auto flex items-center justify-center lg:shadow-2xl lg:shadow-slate-700">
 
       <Router>
         <Routes>
-          <Route path="/" element={<UserPage slideVariants={slideVariants}/>} />
+          <Route path="/" 
+          element={<UserPage
+            isDesktopOrLaptop={isDesktopOrLaptop}
+          />} />
           <Route
             path="/plan"
             element={
@@ -32,20 +38,35 @@ function App() {
                 setAddOnsPrice={setAddOnsPrice}
                 setPlanName={setPlanName}
                 planName={planName}
+                isDesktopOrLaptop={isDesktopOrLaptop}
               />
             }
           />
           <Route
             path="/addons"
-            element={<AddOns toggle={toggle} setAddOnsPrice={setAddOnsPrice} setAddItems={setAddItems} addItems={addItems} />}
+            element={<AddOns 
+              toggle={toggle} 
+              setAddOnsPrice={setAddOnsPrice} 
+              setAddItems={setAddItems} 
+              addItems={addItems}
+              isDesktopOrLaptop={isDesktopOrLaptop}
+               />}
           />
           <Route 
             path="/summary"
-            element={ <Summary planName={planName} addOnsPrice={addOnsPrice} toggle={toggle} addItems={addItems} />}
+            element={ <Summary planName={planName}
+             addOnsPrice={addOnsPrice}
+              toggle={toggle}
+               addItems={addItems}
+                setAddItems={setAddItems}
+                isDesktopOrLaptop={isDesktopOrLaptop}
+               />}
           />
           <Route 
             path="/confirm"
-            element={ <Confirm />}
+            element={ <Confirm 
+              isDesktopOrLaptop={isDesktopOrLaptop}
+            />}
           />
         </Routes>
       </Router>

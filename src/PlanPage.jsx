@@ -6,7 +6,7 @@ import pro from "./images/icon-pro.svg";
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 
-function PlanPage({ toggle, setToggle, setAddOnsPrice, setPlanName, planName}) {
+function PlanPage({ toggle, setToggle, setAddOnsPrice, setPlanName, planName, isDesktopOrLaptop}) {
     const [plan, setPlan] = useState(1);
 
     useEffect(() => {
@@ -41,7 +41,6 @@ function PlanPage({ toggle, setToggle, setAddOnsPrice, setPlanName, planName}) {
     const handleClick = (e, number) => {
         e.preventDefault();
         setPlan(number);
-        console.log(planName)
     };
 
     function handleToggle(){
@@ -50,9 +49,9 @@ function PlanPage({ toggle, setToggle, setAddOnsPrice, setPlanName, planName}) {
 
     return(
         <motion.div 
-        initial={{x:200}}
-        whileInView={{x:0}}
-        transition={{ type: "spring", stiffness: 200, damping: 10 }}
+        initial={isDesktopOrLaptop ? {x:200} : {}}
+            whileInView={isDesktopOrLaptop ? {x:0} : {}}
+            transition={{ type: "spring", stiffness: 200, damping: 10 }}
         className="w-full lg:max-w-[900px] h-auto min-h-screen lg:h-[560px] lg:min-h-0 lg:rounded-xl flex flex-col lg:flex-row justify-start items-center lg:p-4 lg:gap-[40px] bg-white">
             <Navigate number={2}/>
             <div className=" lg:w-[550px] w-full flex flex-col gap-5  items-center justify-start pb-5 lg:h-full relative z-20" >
